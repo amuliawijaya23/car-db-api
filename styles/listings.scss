@@ -1,0 +1,239 @@
+@import "./partials/mixins";
+
+@media screen and (min-width: 1280px) {
+
+  .listings {
+    @include flexColumn;
+    align-items: center;
+
+  }
+
+  .posts {
+    @include flexRow;
+    border: solid;
+    width: 60vw;
+    margin: 3% 3% 3% 3%;
+    background-color: #e4e4e4;
+    position: relative;
+
+    .star {
+      position: absolute;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      height: 3vw;
+      opacity: 0.5;
+      width: 3vw;
+      right: 28vw;
+      top: 1vh;
+      font-size: 1.35rem;
+
+      &:hover {
+        transition: all .2s ease-in;
+        color: red;
+        opacity: 1;
+      }
+    }
+
+    .starButton {
+      display: contents;
+      align-items: center;
+      opacity: 0.5;
+    }
+
+    .starRemoveButton {
+      display: none;
+      color: red;
+      align-items: center;
+      opacity: 1;
+    }
+
+    .favoriteTrue {
+      color: red;
+    }
+
+    .carPhoto {
+      max-width: 55%;
+      max-height: 45%;
+      position: relative;
+    }
+
+    .postBox {
+      @include flexColumn;
+      background-color: rgba(251, 251, 251, 0.674);
+      justify-content: space-between;
+      width: 100%;
+      padding: 2px;
+      align-items: center
+    }
+
+    .titlePrice {
+      @include flexRow;
+      width: 100%;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    .postTitle {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .postPrice {
+      color: rgb(87, 184, 43);
+      opacity: 0.8;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .messageButtonContainer {
+      @include flexRow;
+      background-color: rgba(251, 251, 251, 0.674);
+      padding: 10px;
+      border-top: solid;
+      border-bottom: solid;
+      width: 98%;
+      justify-content: space-between;
+
+      .postInfo {
+        @include flexColumn;
+        margin-left: 1vw;
+        align-items: flex-start;
+        justify-content: flex-end;
+      }
+
+      .contact {
+        @include flexColumn;
+        align-items: center;
+        justify-content: flex-end;
+        margin-right: 1vw;
+      }
+
+      .messageButton {
+        display: flex;
+        border: solid;
+        border-radius: 50%;
+        width: 4vw;
+        height: 4vw;
+        max-width: 8vw;
+        max-height: 8vw;
+        margin-bottom: 2vh;
+        margin-left: 5vw;
+        padding: 5px;
+        background-color: rgba(88, 184, 43, 0.714);
+        justify-content: center;
+        align-items: center;
+        opacity: 0.8;
+        &:hover{
+          cursor: pointer;
+          transition: all .2s ease-in;
+          opacity: 1;
+          transform: scale(1.1);
+          background-color: orange;
+        }
+
+        i {
+          text-align: center;
+          font-size: 1.5rem
+        }
+      }
+    }
+
+
+    .description {
+      @include flexColumn;
+      justify-content: center;
+      align-items: center;
+      width: 98%;
+      padding: 10px;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      margin-bottom: 1vh;
+      font-size: 1rem;
+
+       .postDesc {
+         margin-bottom: 2vh;
+         width: 100%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         padding: 10px;
+       }
+    }
+
+    &:hover {
+      transition: all .2s ease-in;
+      box-shadow: 0px 15px 10px 15px #7cbef870;
+      transform: scale(1.01);
+    }
+
+    .sold {
+      position: absolute;
+      align-self: center;
+      top: 50%;
+      left: 0;
+      border: double thick red;
+      width: 100%;
+      padding: 5px;
+      color: red;
+      background-color: #f7b0b069;
+      text-align: center;
+      font-weight: bolder;
+      font-size: xx-large;
+      z-index: 10;
+    }
+
+    .listingDelete {
+      display: none;
+      flex-direction: column;
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 1) 0%,
+        rgb(183, 206, 233) 70%
+      );
+      border: none;
+      justify-content: end;
+      height: auto;
+      margin-bottom: 1vh;
+      padding: 10px;
+
+      &:hover {
+        transition: all .2s ease-in;
+        transform: scale(1.1);
+        font-weight: bolder;
+        color: white;
+      }
+    }
+
+    .submitListingDelete {
+      color: red;
+      border: none;
+      background-color: inherit;
+      margin: 1%;
+    }
+    .listingSold {
+      display: none;
+      flex-direction: column;
+      justify-content: end;
+      height: auto;
+      background-color: green;
+
+      &:hover {
+        transition: all .2s ease-in;
+        transform: scale(0.9);
+        background-color: red;
+      }
+    }
+    .submitListingSold {
+      color: rgb(255, 255, 255);
+      border: none;
+      background-color: inherit;
+      margin: 1%;
+    }
+
+  }
+}

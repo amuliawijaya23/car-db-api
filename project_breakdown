@@ -1,0 +1,162 @@
+# W05D05 - Mid-term Project Kickoff
+
+## Pick a Project
+
+- Buy/Sell Listing Website
+
+## User Stories
+
+### Users
+
+- As a User, I want to browse, to buy.
+- As a User, I want to filter searches by price.
+- As a User, I can send Admin a message.
+- As a User, I can add items to favorite list.
+
+### Admins
+
+- As an Admin, I want to post, to sell.
+- As an Admin, I want to preview items to sell.
+- As an Admin, I want to mark items as sold.
+- As an Admin, I want to preview items I've sold.
+- As an Admin, I want to remove sold items from my list.
+- As an Admin, I can reply to User messages (via app/email/text).
+
+## User Scenarios
+
+"Given **, when \_, then \_\_**."
+
+### User
+
+- Given that I am logged in, when I make a search query, a list of posts within the parameters of my query are displayed.
+- Given that I am logged in, when I click message seller, a message can be delivered to an Admin.
+- Given that I am logged in, when I click on a favorite button, the post is displayed in the favorites tab.
+
+### Admin
+
+- Given that I am logged in, when I click to post a new item to sell it is added to the Listings tab.
+- Given that I am logged in, when I click on the Listings tab, the Listings page is displayed.
+- Given that I am logged in, when I click sold on a post, the post will display 'SOLD' and be moved to the sold tab.
+- Given that I am logged in, when I click on a received message in the Message tab, I can reply to the sender with my own message.
+
+## ERD
+
+### Nouns:
+
+- User (Users/Admins)
+
+  - id PK
+  - name
+  - email
+  - password
+  - Admin (boolean)
+
+- Listings
+
+  - id PK
+  - user_id FK
+  - price
+  - year
+  - make
+  - model
+  - transmission (boolean)
+  - color
+  - description
+  - sold (boolean)
+  - image
+
+- Favorites (items to buy)
+
+  - id PK
+  - user_id FK
+  - listing_id FK
+  - favorited (boolean)
+
+- Messages
+
+  - id PK
+  - listing_id FK
+  - messageReceived (boolean)
+
+- MessageListing
+
+  - id PK
+  - sender_id FK
+  - receiver_id FK
+  - message_id FK
+  - message
+
+- Use these nouns/entities to build out your database (ie. tables are the nouns from the stories)
+
+## Routes
+
+Once you know the resources that you'll have, write out the routes that you'll need to perform BREAD operations on those resources
+Remember RESTful conventions (they make it much easier)
+
+- home '/'
+- my listings '/listings'
+- specific item listing '/listing/:id'
+- message '/messages', '/inbox', '/messages/:id', '/messages/new/:id'
+- user/admin session '/:id'
+- login '/login'
+- logout '/logout'
+- search '/browse', '/make', '/model', '/price', '/year'
+- posted listings '/mylisting'
+- sold listing '/soldlisting', '/sold/:listID'
+- favorites '/favorited', '/favoritesTrue/:listID', '/favoritesFalse/:listID'
+- new listing '/newlisting'
+- delete listing '/delete/:listID'
+-
+
+## MVP vs MVD
+
+There is a concept in development of an MVP, the Minimum Viable Product
+An MVP has just enough features to be useful to a User
+This concept helps streamline the development process and help keep the team on target
+For mid-terms, we want to focus on the MVD, the Minimum Viable Demo
+If you aren't going to demo it, don't build it
+Wireframes
+Draw out the structure of your web pages
+This will make it much easier to build out these pages later
+This is also a great opportunity to get input from all of the team members
+Design matters... however you are a developer, not a designer
+Get inspiration from websites you visit
+
+## User Login
+
+Don't do it
+Seriously, don't do it
+We know that you know how to register and login Users
+
+```js
+// do this instead
+app.get("/login/:id", (req, res) => {
+  // using encrypted cookies
+  req.session.User_id = req.params.id;
+
+  // or using plain-text cookies
+  res.cookie("User_id", req.params.id);
+
+  // send the User somewhere
+  res.redirect("/");
+});
+```
+
+We did it.
+
+## Tech Choices
+
+We have made all the tech choices for you
+Back End: Node and Express
+Front End: HTML, CSS, JS, jQuery, Bootstrap
+The Mid-term Skeleton
+Use the provided node-skeleton as a template for your project
+This will get you up and running quickly
+
+## SPA vs Multi-page App
+
+These concepts are not mutually exclusive
+You can choose one or the other or both
+Git
+Use Git best practices (ask a mentor for clarification if you need it)
+Use branches
